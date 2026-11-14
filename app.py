@@ -97,7 +97,7 @@ st.markdown("""
 st.markdown('<div class="eyebrow">INTERNATIONAL TRADE / DATA EXPLORER</div>', unsafe_allow_html=True)
 st.title("Trade Competition Radar")
 st.markdown('<div class="intro">Explore how countries gain and lose market share in global trade.</div>', unsafe_allow_html=True)
-st.markdown('<div class="note">Research prototype Â· Seven selected markets Â· CEPII BACI HS 2017 Â· 2017â2024. Changes in market share do not establish causes.</div>', unsafe_allow_html=True)
+st.markdown('<div class="note">Research prototype | Seven selected markets | CEPII BACI HS 2017 | 2017-2024. Changes in market share do not establish causes.</div>', unsafe_allow_html=True)
 
 data = load_data()
 
@@ -105,7 +105,7 @@ data = load_data()
 market_list = data[["j", "k", "importer", "product"]].drop_duplicates()
 market_labels = []
 for row in market_list.itertuples():
-    market_labels.append(f"{row.importer} â HS {row.k} â {row.product}")
+    market_labels.append(f"{row.importer} - HS {row.k} - {row.product}")
 
 st.markdown('<div class="section-label">MARKET SELECTION</div>', unsafe_allow_html=True)
 selected_label = st.selectbox("Importing country and product", market_labels)
@@ -136,8 +136,8 @@ changes = compare_suppliers(market, first_year, last_year)
 
 st.markdown('<div class="section-label">MARKET OVERVIEW</div>', unsafe_allow_html=True)
 col1, col2, col3 = st.columns(3)
-col1.metric("Import market Â· final year", f"${market_end / 1000:,.1f}M")
-col2.metric("Suppliers Â· final year", len(end_data))
+col1.metric("Import market | final year", f"${market_end / 1000:,.1f}M")
+col2.metric("Suppliers | final year", len(end_data))
 col3.metric("Change in market value", f"${market_change / 1000:+,.1f}M")
 st.caption("Trade values are nominal USD. BACI records values in thousands of USD; overview values are shown in millions.")
 
